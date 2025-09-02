@@ -1,0 +1,19 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot">
+    <xacro:arg name="simulation" default="false"/>
+    <xacro:property name="simulation" value="$(arg simulation)"/>
+
+    <xacro:include filename="$(find unitree_description)/urdf/g1/main.urdf"/>
+
+    <xacro:if value="${simulation == 'mujoco'}">
+        <xacro:include filename="$(find unitree_description)/urdf/g1/mujoco.xacro"/>
+    </xacro:if>
+    <xacro:if value="${simulation == False}">
+        <xacro:include filename="$(find unitree_description)/urdf/g1/real.xacro"/>
+    </xacro:if>
+
+    <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro"/>
+    <xacro:sensor_d435i parent="torso_link">
+        <origin xyz="0.0385 0.0 0.432" rpy="0 0.8307767239493009 0"/>
+    </xacro:sensor_d435i>
+
+</robot>

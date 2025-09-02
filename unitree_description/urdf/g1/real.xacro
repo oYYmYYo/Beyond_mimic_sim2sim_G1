@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find unitree_description)/urdf/g1/ros2_control.xacro"/>
+
+    <xacro:arg name="network_interface" default=""/>
+
+    <ros2_control name="UnitreeSdk2" type="system">
+        <hardware>
+            <plugin>unitree/UnitreeSdk2</plugin>
+            <param name="network_interface">$(arg network_interface)</param>
+        </hardware>
+        <xacro:hardware_interface/>
+    </ros2_control>
+
+</robot>

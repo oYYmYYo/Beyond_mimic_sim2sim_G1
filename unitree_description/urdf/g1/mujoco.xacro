@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find unitree_description)/urdf/g1/ros2_control.xacro"/>
+
+    <ros2_control name="MujocoSystem" type="system">
+        <hardware>
+            <plugin>mujoco_ros2_control/MujocoSystem</plugin>
+        </hardware>
+        <xacro:hardware_interface/>
+    </ros2_control>
+
+</robot>

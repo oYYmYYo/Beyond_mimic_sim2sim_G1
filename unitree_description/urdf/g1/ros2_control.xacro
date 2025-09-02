@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="joint_interface" params="name initial_pos kp:=80 kd:=3">
+        <joint name="${name}">
+            <command_interface name="stiffness">
+                <param name="initial_value">${kp}</param>
+            </command_interface>
+            <command_interface name="damping">
+                <param name="initial_value">${kd}</param>
+            </command_interface>
+            <state_interface name="position">
+                <param name="initial_value">${initial_pos}</param>
+            </state_interface>
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="hardware_interface">
+        <sensor name="base_imu">
+            <state_interface name="orientation.x"/>
+            <state_interface name="orientation.y"/>
+            <state_interface name="orientation.z"/>
+            <state_interface name="orientation.w"/>
+            <state_interface name="angular_velocity.x"/>
+            <state_interface name="angular_velocity.y"/>
+            <state_interface name="angular_velocity.z"/>
+            <state_interface name="linear_acceleration.x"/>
+            <state_interface name="linear_acceleration.y"/>
+            <state_interface name="linear_acceleration.z"/>
+        </sensor>
+
+        <xacro:joint_interface name="left_hip_pitch_joint" initial_pos="-0.1"/>
+        <xacro:joint_interface name="left_hip_roll_joint" initial_pos="0"/>
+        <xacro:joint_interface name="left_hip_yaw_joint" initial_pos="0"/>
+        <xacro:joint_interface name="left_knee_joint" initial_pos="0.3"/>
+        <xacro:joint_interface name="left_ankle_pitch_joint" initial_pos="-0.2" kp="200" kd="1.0"/>
+        <xacro:joint_interface name="left_ankle_roll_joint" initial_pos="0" kp="5" kd="0.5"/>
+        <xacro:joint_interface name="right_hip_pitch_joint" initial_pos="-0.1"/>
+        <xacro:joint_interface name="right_hip_roll_joint" initial_pos="0"/>
+        <xacro:joint_interface name="right_hip_yaw_joint" initial_pos="0"/>
+        <xacro:joint_interface name="right_knee_joint" initial_pos="0.3"/>
+        <xacro:joint_interface name="right_ankle_pitch_joint" initial_pos="-0.2" kp="200" kd="1.0"/>
+        <xacro:joint_interface name="right_ankle_roll_joint" initial_pos="0" kp="5" kd="0.5"/>
+
+        <xacro:joint_interface name="waist_yaw_joint" initial_pos="0"/>
+        <xacro:joint_interface name="waist_roll_joint" initial_pos="0"/>
+        <xacro:joint_interface name="waist_pitch_joint" initial_pos="0"/>
+
+        <xacro:joint_interface name="left_shoulder_pitch_joint" initial_pos="0.2"/>
+        <xacro:joint_interface name="left_shoulder_roll_joint" initial_pos="0.2"/>
+        <xacro:joint_interface name="left_shoulder_yaw_joint" initial_pos="0"/>
+        <xacro:joint_interface name="left_elbow_joint" initial_pos="1.28"/>
+        <xacro:joint_interface name="left_wrist_roll_joint" initial_pos="0" kp="5" kd="0.5"/>
+        <xacro:joint_interface name="left_wrist_pitch_joint" initial_pos="0" kp="5" kd="0.5"/>
+        <xacro:joint_interface name="left_wrist_yaw_joint" initial_pos="0" kp="5" kd="0.5"/>
+
+        <xacro:joint_interface name="right_shoulder_pitch_joint" initial_pos="0.2"/>
+        <xacro:joint_interface name="right_shoulder_roll_joint" initial_pos="-0.2"/>
+        <xacro:joint_interface name="right_shoulder_yaw_joint" initial_pos="0"/>
+        <xacro:joint_interface name="right_elbow_joint" initial_pos="1.28"/>
+        <xacro:joint_interface name="right_wrist_roll_joint" initial_pos="0" kp="5" kd="0.5"/>
+        <xacro:joint_interface name="right_wrist_pitch_joint" initial_pos="0" kp="5" kd="0.5"/>
+        <xacro:joint_interface name="right_wrist_yaw_joint" initial_pos="0" kp="5" kd="0.5"/>
+    </xacro:macro>
+
+</robot>
